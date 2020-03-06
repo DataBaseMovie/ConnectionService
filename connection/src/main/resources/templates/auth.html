@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Auth</title>
+</head>
+<body>
+<h1>Auth page</h1>
+<header th:replace="fragments/header::header"></header>
+<div>
+    <!--/*@thymesVar id="user" type="com"*/-->
+    <form th:action="@{/connUser}" th:object="${user}"method="post">
+        <fieldset>
+            <div>
+                <label for="username">Username</label>
+                <input type="text" id="username" th:name="username" name="username" placeholder="username" required="required" autofocus="autofocus" />
+            </div>
+
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" th:name="password" name="password" placeholder="password" required="required" />
+            </div>
+
+            <div>
+                <input type="submit" value="Log in" />
+            </div>
+
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        </fieldset>
+    </form>
+</div>
+
+</body>
+</html>
